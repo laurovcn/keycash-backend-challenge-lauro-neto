@@ -2,9 +2,10 @@
 const express = require('express')
 const app = express()
 const models = require('./models/index.js');
-const routes = require('./routes/Routes')
+const routes = require('./routes/Propertys.Routes')
 const port = 3000
 
+app.use(express.json());
 app.use(routes);
 
 models.sequelize
