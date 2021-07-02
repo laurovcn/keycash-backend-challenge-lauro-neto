@@ -23,7 +23,7 @@ module.exports = {
       size: {
         type: Sequelize.STRING
       },
-      garage: {
+      parkingspaces: {
         type: Sequelize.STRING
       },
       createdAt: {

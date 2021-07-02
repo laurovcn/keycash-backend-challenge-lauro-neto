@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     years: DataTypes.STRING,
     room: DataTypes.STRING,
     size: DataTypes.STRING,
-    garage: DataTypes.STRING
+    parkingspaces: DataTypes.STRING
   }, {
     paranoid: true, 
     sequelize,

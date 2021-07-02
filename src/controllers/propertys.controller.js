@@ -1,25 +1,10 @@
 
 const models = require("../models");
 const db = models.propertys;
-const { Op } = require("sequelize");
-    
-    exports.create = (req, res) => {     
-        const { localization, floors, years, room, size, car_space } = req.body;
-    
-        db.create({
-            localization, 
-            floors, 
-            years,
-            room,
-            size,
-            garage
-            }).then(async () => {      
-                await res.json(req.body);
-            })
-    }
-
+const { Op } = require("sequelize");    
+  
     exports.create = (req, res) => {    
-        const body = { localization, floors, years, room, size, car_space } = req.body;    
+        const body = { localization, floors, years, room, size, parkingspaces } = req.body;    
        
         db.create(body)
           .then(data => {
@@ -46,7 +31,7 @@ const { Op } = require("sequelize");
         )
      }
 
-     exports.findOne = (req, res) => {
+     exports.findById = (req, res) => {
         const id = req.params.id;
       
         db.findByPk(id)
@@ -60,13 +45,13 @@ const { Op } = require("sequelize");
           });
       }
 
-      exports.findby = (req, res) => {
-        const { room, size, garage } = req.query;
+      exports.findWith = (req, res) => {
+        const { room, size, parkingspaces } = req.query;
 
         db.findAll({
             where: {
-              [Op.and]: [{room} || {size} ||{garage}],
-              [Op.or]: [{room} || {size} || {garage}]               
+              [Op.and]: [{room} || {size} ||{parkingspaces }],
+              [Op.or]: [{room} || {size} || {parkingspaces }]               
             }
           }).then(result => res.json({       
             result
