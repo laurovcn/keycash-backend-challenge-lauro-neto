@@ -72,7 +72,7 @@ const { Op } = require("sequelize");
               });
             } else {
               res.send({
-                message: `Cannot update propertywith id=${id}. Maybe Tutorial was not found or req.body is empty!`
+                message: `Cannot update propertywith id=${id}. Maybe property was not found or req.body is empty!`
               });
             }
           })
