@@ -50,7 +50,7 @@ const { Op } = require("sequelize");
 
         db.findAll({
             where: {
-              [Op.and]: [{room} || {size} ||{parkingspaces }],
+              [Op.and]: [{room} || {size} || {parkingspaces }],
               [Op.or]: [{room} || {size} || {parkingspaces }]               
             }
           }).then(result => res.json({       
