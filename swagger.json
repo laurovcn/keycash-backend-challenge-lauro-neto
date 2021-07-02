@@ -201,7 +201,7 @@
     "/delete/{id}": {
         "delete": {
             "description": "Delete by id",
-            "summary": "Update property",
+            "summary": "Delete property",
             "tags": ["Propertys"] ,
             "parameters": [
                 {
