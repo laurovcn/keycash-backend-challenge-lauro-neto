@@ -1,3 +1,258 @@
 {
-    
+ "openapi": "3.0.0",
+ "info": {
+     "title": "API of property manipulation",
+     "description": "This API aims to manipulate propertys",
+     "contact": {
+         "email": "lauro.neto.1995@gmail.com"
+     },
+     "version": "1.0.0"
+ },
+ "servers": [
+     {
+         "url": "http://localhost:3000/v1/propertys",
+         "description": "API de produção"
+        }
+ ],
+ "paths": {
+     "/create": {
+         "post": {
+             "summary": "Register of property",
+             "description": "Create a register of a property",
+             "tags": ["Propertys"],
+             "requestBody": {
+                 "content": {
+                     "application/json": {
+                         "schema": {
+                            "$ref": "#/components/schemas/Propertys"
+                         },
+                         "examples": {
+                             "property": {
+                                 "value": {
+                                     "localization": "Belém",
+                                     "floors": "3",
+                                     "years": "10",
+                                     "room": "5",
+                                     "size": "500",
+                                     "parkingspaces": "4"
+                                 }
+                             }
+                         }
+                     }
+                 }
+             },
+             "responses": {
+                "500": {
+                    "description": "Cannot create register"
+                } , 
+                "201": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",                            
+                                 "$ref": "#/components/schemas/Propertys"
+                               
+                            }
+                        }
+                    } 
+                }
+            } 
+         }                
+     } ,
+     "/find": {
+         "get": {
+             "description": "Find all register of Propertys",
+             "summary": "Find all Propertys",
+             "tags": ["Propertys"] ,
+             "responses": {
+                 "200": {
+                     "description": "OK",
+                     "content": {
+                         "application/json": {
+                             "schema": {
+                                 "type": "object",
+                                 "$ref": "#/components/schemas/Propertys"
+                             }
+                         }
+                     }
+                 }  
+             }            
+         }
+     },
+     "/findbyid/{id} ": {
+        "get": {
+            "description": "Find property by id",
+            "summary": "Find property",
+            "tags": ["Propertys"] ,
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "Fields of property",
+                    "required": "true"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "$ref": "#/components/schemas/Propertys"
+                            }
+                        }
+                    }
+                }
+            }            
+        }
+    }  ,
+     "/findwith": {
+        "get": {
+            "description": "Find property room, size and parkingspaces",
+            "summary": "Find all selected",
+            "tags": ["Propertys"] ,
+            "parameters": [
+                {
+                    "name": "room",                    
+                    "in": "query",
+                    "description": "Fields of property",
+                    "required": "true"
+                },
+                {
+                    "name": "size",                    
+                    "in": "query",
+                    "description": "Fields of property",
+                    "required": "true"
+                },{
+                    "name": "parkingspaces",                    
+                    "in": "query",
+                    "description": "Fields of property",
+                    "required": "true"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Propertys"
+                                }                                
+                            }
+                        }
+                    }
+                }
+            }            
+        }
+    } ,
+    "/update/{id}": {
+        "put": {
+            "description": "Update by id",
+            "summary": "Update property",
+            "tags": ["Propertys"] ,
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "Fields of property",
+                    "required": "true"
+                }
+            ],
+            "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Propertys"
+                        },
+                        "examples": {
+                            "property": {
+                                "value": {
+                                    "localization": "São Paulo",
+                                    "floors": "2",
+                                    "years": "2",
+                                    "room": "2",
+                                    "size": "300",
+                                    "parkingspaces": "2"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "$ref": "#/components/schemas/Propertys"
+                            }
+                        }
+                    }
+                }
+            } 
+        }                
+    } ,
+    "/delete/{id}": {
+        "delete": {
+            "description": "Delete by id",
+            "summary": "Update property",
+            "tags": ["Propertys"] ,
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "Fields of property",
+                    "required": "true"
+                }
+            ],           
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "$ref": "#/components/schemas/Propertys"
+                            }
+                        }
+                    }
+                }
+            } 
+        }                
+    }       
+ },
+
+ "components": {
+    "schemas": {
+        "Propertys": {
+            "type": "object",
+            "properties": {
+                "localization": {
+                    "type": "string"
+                },
+                "floors": {
+                    "type": "string"
+                },
+                "years": {
+                    "type": "string"
+                }, 
+                "room": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "string"
+                },
+                "parkingspaces": {
+                   "type": "string"
+                }
+            }
+        }
+    }
+}
 }

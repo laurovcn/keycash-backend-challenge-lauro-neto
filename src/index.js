@@ -9,7 +9,7 @@ const port = 3000
 app.use(express.json());
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-app.use("/v1", routes);
+app.use("/v1/propertys", routes);
 
 models.sequelize
     .sync()
